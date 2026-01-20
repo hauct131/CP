@@ -8,6 +8,11 @@
  tong cua chung la luy thua cua 2
 
  subtask 1: duyet O(n^2)
+ subtask 2: duyet tren gia tri ai O(n^2)
+ subtask 3: nhan xet chi co khoang 2^32 >= 2*10^9 => duyet theo so mu cua 2
+ voi moi x thi ta se xet xem doan truoc no co ton tai mot gia tri 2^i - x nao khong
+ neu co thi se cong vao ket qua
+ DPT O(n * 32 * log n)
   *
   */
 
