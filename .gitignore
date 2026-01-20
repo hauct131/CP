@@ -1,0 +1,12 @@
+*.exe
+*.o
+*.out
+bin/
+obj/
+input.txt
+output.txt
+*.inp
+*.out
+.vscode/
+*.layout
+*.depend
