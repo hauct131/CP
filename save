@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# 1. Chay script cap nhat muc luc README.md tu dong
+python3 generate_index.py
+
+# 2. Chuan bi message commit
+if [ -z "$1" ]
+then
+  MSG="Update solutions $(date +'%Y-%m-%d %H:%M:%S')"
+else
+  MSG="$1"
+fi
+
+# 3. Day len GitHub
+echo "Dang day code len GitHub..."
+git add .
+git commit -m "$MSG"
+git push
+
+echo "🚀 Xong! Code da len mây & README da duoc cap nhat."
