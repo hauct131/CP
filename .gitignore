@@ -10,3 +10,10 @@ output.txt
 .vscode/
 *.layout
 *.depend
+# C++ Compiled files
+bin/
+obj/
+*.o
+*.exe
+Training/
+Training_Workspace/
