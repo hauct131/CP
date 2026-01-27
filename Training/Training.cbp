@@ -32,7 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../Khac/monsterhunter/monsterhunter_Full.cpp" />
+		<Unit filename="../input.txt" />
+		<Unit filename="../output.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
