@@ -25,12 +25,43 @@ template <class T> void print_v(vector<T> &v) {
 ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
 
-void solve() {
-    cout << "Helo";
+const int maxn = 2e5+5;
+int n, p, h;
+char a[maxn];
+int res = 1e9;
+void Try(int idx, int curP, int curH, int ms){
+    if(idx > n){
+        res = min(res, ms);
+        return;
+    }
+
+    if(curP <= 0 || curH <= 0) return;
+
+    if(a[idx] == '#'){
+        Try(idx + 1, curP, curH, ms);
+    }
+    else if(a[idx] == 'P')
+        Try(idx + 1, curP + 1, curH, ms);
+    else if(a[idx] == 'H')
+        Try(idx + 1, curP, curH + 1, ms);
+    else{
+        if(curP - 1 > 0) Try(idx + 1, curP - 1, curH, ms + 1);
+        if(curH - 1 > 0) Try(idx + 1, curP, curH - 1, ms);
+    }
+
+
+}
+
+void solve1() {
+    Try(1, p, h, 0);
+    cout << (res == 1e9 ? -1 : res) << endl;
 }
 
 int main() {
     init();
-    solve();
+    cin >> n >> p >> h;
+    for(int i = 1; i <= n; i++) cin >> a[i];
+
+    solve1();
     return 0;
 }
