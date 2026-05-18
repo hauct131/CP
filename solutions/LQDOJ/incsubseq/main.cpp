@@ -16,8 +16,31 @@ void init() {
     #endif
 }
 
+const int maxn = 1e5+5;
+const int INF = 1e10;
+int n;
+int a[maxn];
 void solve(){
-
+    cin >> n;
+//    cout << INF << endl;
+    int A, B;
+    A = B = INF;
+    int ans = 0;
+    for(int i = 1; i <= n; i++){
+        int x; cin >> x;
+        if(A > B) swap(A, B);
+        if(x <= A){
+            A = x;
+        }
+        else if(x > B){
+            ans++;
+            A = x;
+        }
+        else{
+            B = x;
+        }
+    }
+    cout << ans << endl;
 }
 
 signed main()
