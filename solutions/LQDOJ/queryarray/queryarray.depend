@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1779893884 source:/home/hao/CP_Code/solutions/LQDOJ/queryarray/main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
