@@ -47,14 +47,8 @@ int uocN(int n)
     int sum = 0;
     while(n > 1)
     {
-        int p = prime[n];
-        int cnt = 0;
-        while(n % p == 0)
-        {
-            n/= p;
-            cnt++;
-        }
-        sum += cnt;
+        sum++;
+        n /= prime[n];
     }
     return sum;
 }

@@ -1,0 +1,8 @@
+3
+0 3
+3 1
+4 10
+
+max(min(xi - xj, yi - yj)) >= D
+yi-yj >= D <=> yj <= yi - D
+yi-yj <= -D <=> yi + D <= yj

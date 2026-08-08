@@ -9,6 +9,7 @@ using namespace std;
 typedef vector<int> vi;
 typedef pair<int, int> pii;
 typedef vector<vi> vii;
+typedef vector<pii> vpii;
 
 #define F first
 #define S second
@@ -22,29 +23,71 @@ void init() {
     #endif
 }
 
-int n, l, r;
+const int MAXN = 2e5;
+int n, a, b;
+int arr[MAXN + 10];
+int pre[MAXN + 10];
 
 void solve(){
-    cin >> n >> l >> r;
-    int pre[n + 1];
-    int a[n + 1];
-    int res = -100000000000;
-
+    cin >> n >> a >> b;
     pre[0] = 0;
+
     for(int i = 1; i <= n; i++){
-        cin >> a[i];
-        pre[i] = pre[i-1] + a[i];
+        cin >> arr[i];
+        pre[i] = pre[i-1] + arr[i];
     }
-    for(int i = l; i <= r; i++){
-        for(int j = 1; j <= n - i + 1; j++){
-            int k = j + i - 1;
 
-            res = max(res, pre[k] - pre[j - 1]);
+    int res = LLONG_MIN;
 
-//            cout << i << " " << j << " " << k  << " " << res << " " << " " << pre[j] << " " << pre[k-1] << " " << pre[j] - pre[k-1]<< endl;
+//    for(int len = a; len <= b; len++){
+//        for(int l = 1; l <= n - len + 1; l++){
+//            int r = l + len - 1;
+//            res = max(res, pre[r] - pre[l - 1]);
+//        }
+//    }
+
+//    priority_queue<pii, vpii, greater<pii>> pq;
+//    for(int r = a; r <= n; r++){
+//        int left = max(0ll, r - b);
+//        int right = r - a;
+//
+//        pq.push({pre[right], right});
+//        while(!pq.empty() && pq.top().S < left){
+//            pq.pop();
+//        }
+
+//    multiset<pii> ms;
+//    for(int r = a; r <= n; r++){
+//        int left = max(0ll, r - b);
+//        int right = r - a;
+//        ms.insert({pre[right], right});
+//        if(left - 1 >= 0){
+//            ms.erase({pre[left-1], left-1});
+//        }
+//        res = max(res, pre[r] - ms.begin()->F);
+//    }
+    deque<int> dq;
+    for(int r = a; r <= n; r++){
+        int left = max(0ll, r - b);
+        int right = r - a;
+        while(!dq.empty() && dq.front() < left){
+            dq.pop_front();
         }
+        while(!dq.empty() && pre[dq.back()] >= pre[right]){
+            dq.pop_back();
+        }
+        dq.push_back(right);
+        res = max(res, pre[r] - pre[dq.front()]);
     }
-    cout << res;
+
+
+//        int minPre = LLONG_MAX;
+//        for(int i = left; i <= right; i++){
+//            minPre = min(minPre, pre[i]);
+//        }
+//        res = max(res, pre[r] - pq.top().F);
+
+    cout << res << endl;
 }
 
 signed main()
